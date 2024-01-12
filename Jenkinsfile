@@ -13,7 +13,7 @@ pipeline {
         stage('Build docker image'){
             steps{
                 script{
-                    sh 'docker build -t javatechie/devops-integration .'
+                    sh 'docker build -t Sundarraj9942/cloud10 .'
                 }
             }
         }
@@ -21,19 +21,14 @@ pipeline {
             steps{
                 script{
                    withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
-                   sh 'docker login -u javatechie -p ${dockerhubpwd}'
+                   sh 'docker login -u rajsundar1106@gmail.com -p ${Sundar@99}'
 
 }
-                   sh 'docker push javatechie/devops-integration'
+                   sh 'docker push Sundarraj9942/cloud10 .'
                 }
             }
         }
-        stage('Deploy to k8s'){
-            steps{
-                script{
-                    kubernetesDeploy (configs: 'deploymentservice.yaml',kubeconfigId: 'k8sconfigpwd')
+        
                 }
             }
-        }
-    }
-}
+        
